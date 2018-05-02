@@ -16,9 +16,9 @@ const TabBar  = TabNavigator({
     Home: {
         screen: Home,
         navigationOptions: {
-            headerTitle: '首页',
+            title: '首页',
             tabBarLabel: '首页',
-            headerLeft: null,
+            headerLeft: (<View/>),
             tabBarIcon: ({tintColor}) => {
                 return(
                     <Image
@@ -39,7 +39,7 @@ const TabBar  = TabNavigator({
         navigationOptions: {
             headerTitle: '社区',
             tabBarLabel: '社区',
-            headerLeft: null,
+            headerLeft: (<View/>),
             tabBarIcon: ({tintColor}) => {
                 return(
                     <Image
@@ -60,7 +60,7 @@ const TabBar  = TabNavigator({
         navigationOptions: {
             headerTitle: '我的',
             tabBarLabel: '我的',
-            headerLeft: null,
+            headerLeft: (<View/>),
             tabBarIcon: ({tintColor}) => {
                 return(
                     <Image
@@ -79,6 +79,7 @@ const TabBar  = TabNavigator({
 },{
     tabBarPosition: 'bottom',
     lazy: true,
+    initialRouteName: 'Home',
     swipeEnabled: false,
     animationEnabled: false,
     tabBarOptions: {

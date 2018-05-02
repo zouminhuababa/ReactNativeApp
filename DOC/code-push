@@ -1,0 +1,53 @@
+安装 CodePush CLI
+管理 CodePush 账号需要通过 NodeJS-based CLI。
+只需要在终端输入 npm install -g code-push-cli，就可以安装了。
+安装完毕后，输入 code-push -v查看版本，如看到版本代表成功。
+
+创建一个CodePush 账号
+
+在终端输入code-push register，会打开如下注册页面让你选择授权账号。
+授权通过之后，CodePush会告诉你“access key”，复制此key到终端即可完成注册
+然后终端输入code-push login进行登陆，登陆成功后，你的session文件将会写在 /Users/你的用户名/.code-push.config。
+code-push login 登陆
+code-push loout 注销
+code-push access-key ls 列出登陆的token
+code-push access-key rm <accessKye> 删除某个 access-key
+
+在CodePush服务器注册app
+
+为了让CodePush服务器知道你的app，我们需要向它注册app
+
+code-push app add <appName> <android/ios> react-native 添加app
+例如：code-push app add MyApp-Android android react-native
+Successfully added the "MyApp-Android" app, along with the following default deployments:
+┌────────────┬─────────────────────────────
+│ Name       │ Deployment Key                                                   │
+├────────────┼──────────────────────────────
+│ Production │ 8Jqophl7y1I8e4PzNxEk3pWDe5-Jcff592b2-884c-4a4d-9cc3-326f8d9980d8 │
+├────────────┼──────────────────────────────
+│ Staging    │ _V76id4zxxjgc5P7bMQnp-cz2bl3cff592b2-884c-4a4d-9cc3-326f8d9980d8 │
+└────────────┴──────────────────────────────
+
+关于deployment-key的设置
+
+在上述代码中我们在创建CodePush实例的时候需要设置一个deployment-key,
+因为deployment-key分生产环境与测试环境两种,所以建议大家在build.gradle中进行设置。在build.gradle中的设置方法如下:
+
+
+打开android/app/build.gradle文件,找到android { buildTypes {} }然后添加如下代码即可:
+
+react-native bundle --platform android --entry-file index.js --bundle-output ./bundles/index.android.bundle --dev false
+
+code-push release MyApp-Android ./bundles 1.0.1 --deploymentName Production --description "RN热更新测试" --mandatory true
+
+
+
+
+
+
+
+
+
+
+
+

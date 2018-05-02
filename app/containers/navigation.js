@@ -4,6 +4,7 @@ import {StackNavigator} from 'react-navigation';
 
 import Launch from '../pages/launch/index';
 import TabBar from '../containers/tabbar';
+import WebViewPage from '../pages/web/WebView';
 
 const AppNavigation = StackNavigator({
     Launch: {
@@ -11,6 +12,9 @@ const AppNavigation = StackNavigator({
     },
     TabBar: {
         screen: TabBar
+    },
+    Webv: {
+        screen: WebViewPage
     }
 },
     {
